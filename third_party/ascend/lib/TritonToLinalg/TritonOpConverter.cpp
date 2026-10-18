@@ -1682,8 +1682,7 @@ LogicalResult ReduceConverter::convertToTargetOpExtended(
       if (!indexInput.getDefiningOp<annotation::MarkOp>()) {
         OpBuilder::InsertionGuard guard(rewriter);
         rewriter.setInsertionPoint(linalgOp);
-        auto indexMarkOp =
-            rewriter.create<annotation::MarkOp>(loc, indexInput);
+        auto indexMarkOp = rewriter.create<annotation::MarkOp>(loc, indexInput);
         indexMarkOp->setAttr("UseIndexInput", rewriter.getUnitAttr());
       }
     }
